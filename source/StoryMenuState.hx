@@ -222,6 +222,10 @@ class StoryMenuState extends MusicBeatState
 
 		trace("Line 165");
 
+		#if mobile
+		addVPad(LEFT_FULL, A_B_X_Y);
+		#end
+
 		super.create();
 	}
 

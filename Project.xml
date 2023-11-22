@@ -23,14 +23,12 @@
 	<!--HTML5-specific-->
 	<window if="html5" resizable="true" />
 
-	<!--Desktop-specific-->
-	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" vsync="false"/>
+	<!-- Window Settings -->
+	<window width="1280" height="720" fps="60" orientation="landscape" background="#000000" hardware="true" vsync="false" resizable="true" />
 
-	<!--Mobile-specific-->
-	<window if="mobile" orientation="landscape" fullscreen="true" width="0" height="0" resizable="false"/>
+	<window allow-high-dpi="true" unless="web" />
 
-	<!--Switch-specific-->
-	<window if="switch" orientation="landscape" fullscreen="true" width="0" height="0" resizable="true" />
+	<window fullscreen="true" resizable="false" if="mobile || switch" />
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 
@@ -44,7 +42,8 @@
 
 	<assets path="assets/preload" rename="assets" exclude="*.ogg" if="web"/>
 	<assets path="assets/preload" rename="assets" exclude="*.mp3" unless="web"/>
-	
+	<assets path="assets/vpad" if="mobile" />
+
 	<!-- <define name="PRELOAD_ALL" /> -->
 	<define name="PRELOAD_ALL" unless="web" />
 	<define name="NO_PRELOAD_ALL" unless="PRELOAD_ALL"/>
@@ -127,6 +126,7 @@
 	<haxelib name="polymod"/>
 	<haxelib name="newgrounds"/>
 	<haxelib name="hxcpp-debug-server" if="desktop debug"/>
+	<haxelib name="extension-androidtools" if="android" />
 	
 	<!-- <haxelib name="flixel-animate" /> -->
 	<!-- <haxelib name="spinehaxe" /> -->
@@ -202,4 +202,26 @@
 		<!-- <haxedef name="NG_FORCE_EXPIRED_SESSION" if="debug" /> -->
 	</section>
 	
+	<haxeflag name="-dce" value="full" />
+
+	<!--DPI Awareness-->
+
+	<haxedef name="openfl_dpi_aware" unless="web" />
+
+	<!--Undefinitions-->
+
+	<undefine name="openfl-disable-handle-error" if="debug" />
+
+	<!--Platforms Config-->
+
+	<section if="android">
+		<config>
+			<!--Gradle-->
+			<android gradle-version="7.4.2" gradle-plugin="7.3.1" />
+
+			<!--Target SDK-->
+			<android target-sdk-version="29" if="${lime &lt; 8.1.0}" />
+		</config>
+	</section>
+
 </project>

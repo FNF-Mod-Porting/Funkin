@@ -64,6 +64,11 @@ class GameOverSubstate extends MusicBeatSubstate
 			randomCensor = [1, 3, 8, 13, 17, 21];
 
 		randomGameover = FlxG.random.int(1, 25, randomCensor);
+
+		#if mobile
+		addVPad(NONE, A_B);
+		addVPadCamera();
+		#end		
 	}
 
 	var playingDeathSound:Bool = false;
