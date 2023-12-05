@@ -54,7 +54,7 @@ jobs:
           mkdir -p "%HAXELIB_ROOT%"
           haxelib setup "%HAXELIB_ROOT%"
           haxelib install lime 7.9.0
-          haxelib install openfl
+          haxelib install openfl 9.2.0
           haxelib --never install flixel 4.11.0
           haxelib run lime setup flixel
           haxelib run lime setup
@@ -65,6 +65,7 @@ jobs:
           haxelib install flixel-addons
           haxelib install newgrounds 1.4.0
           haxelib set flixel 4.11.0
+          haxelib set openfl 9.2.0
           haxelib set flixel-addons 2.11.0
           haxelib git polymod https://github.com/larsiusprime/polymod.git
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
